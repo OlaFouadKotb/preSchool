@@ -6,23 +6,21 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
-
-class Teacher extends Model
+class Guardian extends Model
 {
     use HasFactory;
     protected $fillable = [
-        'fullName',
-        'image',
+        'guardianName',
+        'relationOfKid',
         'phone', 
-        'facebook',
-        'twitter', 
-        'instagram', 
-       
+        'email',
+        'appointment', 
+        
 ];
-public function teacher()
-{
+public function guardian()
+    {
 
-    return $this->belongsTo(Ciass::class);
-}
-}
+        return $this->belongsTo(Kid::class);
+    }
 
+}

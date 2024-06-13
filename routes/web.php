@@ -4,6 +4,9 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\KidderController;
 use App\Http\Controllers\DashBoardController;
+use App\Http\Controllers\HomeController;
+use App\Http\Controllers\Auth\LoginController;
+use Illuminate\Support\Facades\Auth;
 
 Route::get('lay',function(){
     return view('dashBoard.layouts.index');
@@ -28,6 +31,15 @@ Route::get('welcome', function(){
 });
 
 
-//Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+Route::get('/home', [HomeController::class, 'index'])
+    ->middleware('auth') // Apply 'auth' middleware to this route
+    ->name('home');
+
+Auth::routes();
 
 
+// Routes for login and logout
+Route::get('/login', [LoginController::class, 'showLoginForm'])->name('login')->middleware('guest');
+Route::post('/login', [LoginController::class, 'login'])->middleware('guest');
+Route::post('/logout', [LoginController::class, 'logout'])->name('logout')->middleware('auth');

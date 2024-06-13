@@ -8,4 +8,11 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 class Facility extends Model
 {
     use HasFactory;
+    protected $fillable = [
+        'name',
+        'image',
+        'description', 
+        
+];
+
 }

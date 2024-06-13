@@ -21,9 +21,9 @@ class Ciass extends Model
 ];
 
 
-    /**
-     * The children that belong to the class_prechool.
-     */
+//     /**
+//      * The children that belong to the class_prechool.
+//      */
     public function children()
     {
 
